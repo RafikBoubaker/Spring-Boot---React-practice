@@ -8,6 +8,7 @@ class ProjectItem extends Component {
 
   render() {
    
+    const {project}=this.props
     return (
        <div class="container">
                         <div class="card card-body bg-light mb-3">
@@ -21,12 +22,14 @@ class ProjectItem extends Component {
                                 </div>
                                 <div class="col-md-4 d-none d-lg-block">
                                     <ul class="list-group">
-                                         <Link to={``}>
+                                      
+                  <Link to={``}>
                   <li className="list-group-item board">
                     <i className="fa fa-flag-checkered pr-1"> Project Board </i>
                   </li>
                 </Link>
-                                       <Link to={``}>
+
+                    <Link to={`/updateProject/${project.projectIdentifier}`}>
                   <li className="list-group-item update">
                     <i className="fa fa-edit pr-1"> Update Project Info</i>
                   </li>
