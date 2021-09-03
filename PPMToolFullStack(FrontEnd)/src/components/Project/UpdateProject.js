@@ -9,8 +9,8 @@ class UpdateProject extends Component {
         super()
 
         this.state = {
-            id:"",
-     projectName: "",
+      id:"",
+      projectName: "",
       projectIdentifier: "",
       description: "",
       start_date: "",
@@ -72,7 +72,9 @@ class UpdateProject extends Component {
 
 
      render() {
-    const { errors } = this.state;
+       const { errors } = this.state;
+       
+       
     return (
       <div className="project">
         <div className="container">
