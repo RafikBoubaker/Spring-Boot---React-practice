@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getProject } from '../../actions/projectActions'
+import { getProject, createProject} from '../../actions/projectActions'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from "classnames";
@@ -17,7 +17,7 @@ class UpdateProject extends Component {
       end_date: "",
       errors: {}
         }
-         this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     }
 

@@ -50,10 +50,10 @@ const {projects} = this.props.project
     }
 }
 
-Dashboard.prototype = {
-    project: PropTypes.object.isRequired,
-    getProjects:PropTypes.func.isRequired
-}
+// Dashboard.prototype = {
+//     project: PropTypes.object.isRequired,
+//     getProjects:PropTypes.func.isRequired
+// }
 
 const mapStateToProps = state => ({
     //reducer project:projectReducer
