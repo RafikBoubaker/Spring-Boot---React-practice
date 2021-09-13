@@ -1,13 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import { createNewUser } from "../../actions/secutrityAction";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import classnames from "classnames";
-import { Link } from 'react-router-dom'
-import {createNewUser} from '../../actions/secutrityAction'
 
 class Register extends Component {
-
-    constructor() {
+  constructor() {
     super();
 
     this.state = {
@@ -19,16 +17,21 @@ class Register extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    }
-    
+  }
 
-componentWillReceiveProps(nextProps) {
+  componentDidMount() {
+    if (this.props.security.validToken) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
 
-    onSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
     const newUser = {
       username: this.state.username,
@@ -42,14 +45,12 @@ componentWillReceiveProps(nextProps) {
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-    }
-    
-    render() {
+  }
 
-        const { errors } = this.state;
-        return (
-            <div>
-               <div className="register">
+  render() {
+    const { errors } = this.state;
+    return (
+      <div className="register">
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -123,19 +124,22 @@ componentWillReceiveProps(nextProps) {
             </div>
           </div>
         </div>
-      </div> 
-            </div>
-        )
-    }
+      </div>
+    );
+  }
 }
 
 Register.propTypes = {
-    createNewUser: PropTypes.func.isRequired,
-    errors: PropTypes.object.isRequired,
-}
-
+  createNewUser: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  security: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
-    errors: state.errors
-})
-export default connect(null ,{createNewUser}) (Register)
+  errors: state.errors,
+  security: state.security
+});
+export default connect(
+  mapStateToProps,
+  { createNewUser }
+)(Register);
